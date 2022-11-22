@@ -8,4 +8,3 @@
 /test/dummy/log/*.log
 /test/dummy/tmp/
 /.vscode/
-/app/assets/builds/
