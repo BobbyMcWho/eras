@@ -1,14 +1,14 @@
 require_relative "lib/eras/version"
 
 Gem::Specification.new do |spec|
-  spec.name        = "eras"
-  spec.version     = Eras::VERSION
-  spec.authors     = ["Bobby McDonald"]
-  spec.email       = ["bobbymcwho@gmail.com"]
-  spec.homepage    = "https://github.com/bobbymcwho/eras"
-  spec.summary     = "Local error visibility for Rails' ActiveSupport::ErrorReporter"
+  spec.name = "eras"
+  spec.version = Eras::VERSION
+  spec.authors = ["Bobby McDonald"]
+  spec.email = ["bobbymcwho@gmail.com"]
+  spec.homepage = "https://github.com/bobbymcwho/eras"
+  spec.summary = "Local error visibility for Rails' ActiveSupport::ErrorReporter"
   spec.description = "Local error visibility for Rails' ActiveSupport::ErrorReporter"
-  spec.license     = "MIT"
+  spec.license = "MIT"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
@@ -21,4 +21,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 7.0.4"
+  spec.add_dependency "tailwindcss-rails"
+
+  spec.add_development_dependency "standard"
 end

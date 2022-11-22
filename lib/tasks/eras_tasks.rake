@@ -2,3 +2,4 @@
 # task :eras do
 #   # Task goes here
 # end
+task default: [:test, "standard:fix"]
