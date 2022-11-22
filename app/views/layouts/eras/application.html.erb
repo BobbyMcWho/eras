@@ -5,11 +5,15 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag    "eras/application", media: "all" %>
+  <%= stylesheet_link_tag "eras", "data-turbo-track": "reload" %>
 </head>
-<body>
+<%= render "shared/navbar" %>
 
-<%= yield %>
+<body class="bg-slate-500">
+
+  <div class="container mx-auto">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
