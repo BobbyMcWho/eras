@@ -1,7 +1,9 @@
 module Eras
   module Adapters
     class FileSystem
-      def initialize(path = nil)
+      attr_reader :path
+
+      def initialize(_path = nil)
         @path = Rails.root.join("tmp", "eras", "errors.json")
       end
 
@@ -25,6 +27,8 @@ module Eras
       end
 
       def read_errors
+        return [] unless File.exist?(@path)
+
         File.open(@path, "r") do |f|
           JSON.parse(f.read)
         end

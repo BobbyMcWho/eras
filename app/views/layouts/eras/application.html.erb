@@ -2,12 +2,13 @@
 <html>
 <head>
   <title>Eras</title>
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag "eras", "data-turbo-track": "reload" %>
 </head>
-<%= render "shared/navbar" %>
+<%= render "shared/navbar", locals: { environment: @environment } %>
 
 <body class="bg-slate-500">
 

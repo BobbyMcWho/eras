@@ -34,7 +34,7 @@ This gem is in active development, and delivered as-is.
 ## Contributing
 You must run the tailwindcss server while developing, and commit any changes to `app/assets/builds`
 ```
-rake tailwind_engine_watch
+rake app:tailwind_engine_watch
 ```
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

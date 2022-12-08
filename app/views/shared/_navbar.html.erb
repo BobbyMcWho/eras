@@ -1,7 +1,15 @@
 <nav class=" bg-slate-900 w-full flex relative justify-between items-center mx-auto px-8 h-20 mb-5">
-    <!-- logo -->
-    <div class="inline-flex">
+    <div class="w-full h-full inline-flex justify-between items-center">
         <h1 class="text-xl text-white font-extrabold tracking-wider">Eras</h1>
+        <div class="flex h-full flex-row items-center">
+            <p class="text-white mr-2" title="<%= @file_path %>">Errors File: <%= @file_size %></p>
+            <form action="<%= errors_path %>">
+                <select name="environment" class="h-1/3 rounded" onchange="this.form.submit()">
+                    <% %w[development test].each do |env| %>
+                        <option value="<%= env %>" <%= @environment == env ? 'selected' : nil%>><%= env %></option>
+                    <% end %>
+                </select>
+            </form>
+        </div>
     </div>
-    <!-- end logo -->
 </nav>
