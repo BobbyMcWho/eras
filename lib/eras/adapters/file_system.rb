@@ -1,6 +1,7 @@
 module Eras
   module Adapters
     class FileSystem
+      include ActionView::Helpers::NumberHelper
       attr_reader :path
 
       def initialize(_path = nil)
@@ -36,6 +37,16 @@ module Eras
 
       def read_error(id)
         read_errors.find { |e| e['id'] == id }
+      end
+
+      def destroy_file
+        return unless File.exist?(@path)
+        File.delete(@path)
+      end
+
+      def file_size
+        size = File.exist?(@path) ? File.size(@path) : 0
+        number_to_human_size(size)
       end
     end
   end
