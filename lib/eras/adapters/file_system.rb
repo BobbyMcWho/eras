@@ -20,6 +20,9 @@ module Eras
           []
         end
 
+        # Why is this necessary? I thought File.open would create the file if it didn't exist.
+        File.create(@path) unless File.exist?(@path)
+
         File.open(@path, "w") do |f|
           errors = existing_errors
           errors.unshift(data)
