@@ -4,7 +4,11 @@ module Eras
       include ActionView::Helpers::NumberHelper
       attr_reader :path
 
-      def initialize(_path = nil)
+      def initialize(path = nil)
+        if path.nil?
+          dir = Rails.root.join("tmp", "eras")
+          Dir.mkdir(dir) unless File.exists?(dir)
+        end
         @path = Rails.root.join("tmp", "eras", "errors.json")
       end
 
@@ -19,9 +23,6 @@ module Eras
         rescue Errno::ENOENT, JSON::ParserError
           []
         end
-
-        # Why is this necessary? I thought File.open would create the file if it didn't exist.
-        File.create(@path) unless File.exist?(@path)
 
         File.open(@path, "w") do |f|
           errors = existing_errors
