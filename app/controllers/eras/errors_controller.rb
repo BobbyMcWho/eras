@@ -1,9 +1,9 @@
 module Eras
   class ErrorsController < ApplicationController
     before_action :set_file_attrs
+    before_action :set_environment, only: [:index, :show]
 
     def index
-      @environment = params[:environment] || 'development'
       # TODO: We need to actually respect the adapter that's used,
       # and not just assume it's the filesystem adapter.
       @errors = Eras::Adapters::FileSystem.new.read_errors.filter { |e| e['context']['rails_env'] == @environment }
@@ -15,6 +15,10 @@ module Eras
 
     def destroy
       Eras::Adapters::FileSystem.new.destroy_file
+    end
+
+    def set_environment
+      @environment = params[:environment] || 'development'
     end
 
     def set_file_attrs
