@@ -1,6 +1,6 @@
 module Eras
   class ErrorReporter
-    def initialize(adapter: Eras::Adapters::FileSystem.new(::Rails.env))
+    def initialize(adapter: Eras::Adapters::FileSystem.new)
       @adapter = adapter
     end
 
