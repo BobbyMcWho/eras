@@ -1,16 +1,21 @@
 module Eras
   module Adapters
     class FileSystem
+      class Error < StandardError; end
+
       include ActionView::Helpers::NumberHelper
       attr_reader :path
 
-      def initialize(path = nil)
-        if path.nil?
+      def initialize(dir = nil)
+        if dir.nil?
           dir = Rails.root.join("tmp", "eras")
+
           Dir.mkdir(dir) unless File.exists?(dir)
         end
-        # TODO: Actually use the path
-        @path = Rails.root.join("tmp", "eras", "errors.json")
+
+        raise Error, "Directory #{dir} does not exist" unless File.exists?(dir)
+
+        @path = File.join(dir, "errors.json")
       end
 
       def write_error(data)

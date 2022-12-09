@@ -1,7 +1,17 @@
 require "eras/version"
 require "eras/engine"
-require "eras/adapters/file_system"
+require "eras/config"
 
 module Eras
-  # Your code goes here...
+  def self.config
+    @config ||= Eras::Config.new
+  end
+
+  def self.configure
+    yield config
+  end
+
+  def self.adapter
+    config.adapter
+  end
 end

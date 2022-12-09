@@ -1,10 +1,8 @@
 module Eras
   class ErrorReporter
-    def initialize(adapter: Eras::Adapters::FileSystem.new)
-      @adapter = adapter
-    end
-
     def report(error, handled:, severity:, context:, source: nil)
+      return if Eras.config.ignored_error_classes.include?(error.class.name)
+
       context = context.merge(rails_env: ::Rails.env).transform_values(&:to_s)
 
       data = {
@@ -15,10 +13,10 @@ module Eras
         },
         handled: handled,
         severity: severity,
-        context: context, # ActionController.to_s causes stack overflow
+        context: context,
         source: source
       }
-      @adapter.write_error(data)
+      Eras.adapter.write_error(data)
     end
   end
 end
