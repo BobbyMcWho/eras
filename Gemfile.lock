@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    eras (0.2.3)
+    eras (0.2.4)
       rails (>= 7.0)
 
 GEM
