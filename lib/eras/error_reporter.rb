@@ -2,6 +2,7 @@ module Eras
   class ErrorReporter
     def report(error, handled:, severity:, context:, source: nil)
       return if Eras.config.ignored_error_classes.include?(error.class.name)
+      return unless Eras.config.reporting_envs.include?(::Rails.env)
 
       context = context.merge(rails_env: ::Rails.env).transform_values(&:to_s)
 
