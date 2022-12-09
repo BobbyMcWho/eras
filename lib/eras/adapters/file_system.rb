@@ -9,6 +9,7 @@ module Eras
           dir = Rails.root.join("tmp", "eras")
           Dir.mkdir(dir) unless File.exists?(dir)
         end
+        # TODO: Actually use the path
         @path = Rails.root.join("tmp", "eras", "errors.json")
       end
 
