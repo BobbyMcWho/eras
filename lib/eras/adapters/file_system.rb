@@ -10,10 +10,10 @@ module Eras
         if dir.nil?
           dir = Rails.root.join("tmp", "eras")
 
-          Dir.mkdir(dir) unless File.exists?(dir)
+          Dir.mkdir(dir) unless File.exist?(dir)
         end
 
-        raise Error, "Directory #{dir} does not exist" unless File.exists?(dir)
+        raise Error, "Directory #{dir} does not exist" unless File.exist?(dir)
 
         @path = File.join(dir, "errors.json")
       end
