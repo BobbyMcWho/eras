@@ -14,6 +14,7 @@ module Eras
     def destroy
       # TODO: rename to be adapter agnostic
       Eras.adapter.destroy_file
+      redirect_to :root
     end
 
     def set_environment
