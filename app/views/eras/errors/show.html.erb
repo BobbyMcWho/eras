@@ -1,5 +1,5 @@
 <div class="p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700">
-  <h2 class="font-semibold text-3xl mb-5"><%= @error.dig('error', 'class') %></h2>
+  <h2 class="font-semibold text-3xl mb-5"><%= @error.dig('error', 'title') %></h2>
 
   <p><%= @error.dig('error', 'message') %></p>
     <a
